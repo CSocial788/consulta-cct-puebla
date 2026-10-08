@@ -1,3 +1,7 @@
+const cctInput = document.getElementById('cctInput').value
+  .trim()
+  .replace(/[^a-zA-Z0-9]/g, '')
+  .toUpperCase();
 document.getElementById('cctInput').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     consultarCCT();
