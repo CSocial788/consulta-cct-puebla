@@ -1,3 +1,8 @@
+document.getElementById('cctInput').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    consultarCCT();
+  }
+});
 document.getElementById('searchBtn').addEventListener('click', consultarCCT);
 
 // También permite consultar presionando Enter
