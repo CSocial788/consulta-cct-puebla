@@ -156,15 +156,15 @@ button:active {
   color: #691C32 !important; /* Color vino/guinda institucional */
   font-weight: 700 !important; /* Negritas */
 }
-/* --- Contenedor y Estilo para la Animación --- */
+/* --- Contenedor y Estilo Ajustado para la Animación --- */
 .animacion-container {
   text-align: center;
-  margin: 25px auto 40px auto;
+  margin: 15px auto 30px auto;
   padding: 0 15px;
 }
 
 .imagen-animada {
-  max-width: 320px; /* Puedes ajustar este tamaño (ej. 250px o 400px) */
+  max-width: 180px; /* Tamaño reducido para computadora */
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -172,6 +172,6 @@ button:active {
 
 @media (max-width: 600px) {
   .imagen-animada {
-    max-width: 250px; /* Tamaño adaptado para celulares */
+    max-width: 140px; /* Tamaño aún más compacto para celulares */
   }
 }
