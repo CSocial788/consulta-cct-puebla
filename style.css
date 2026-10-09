@@ -156,22 +156,26 @@ button:active {
   color: #691C32 !important; /* Color vino/guinda institucional */
   font-weight: 700 !important; /* Negritas */
 }
-/* --- Contenedor y Estilo Ajustado para la Animación --- */
+/* --- Contenedor y Estilo de la Animación (Más Arriba) --- */
 .animacion-container {
   text-align: center;
-  margin: 15px auto 30px auto;
+  margin: -15px auto 30px auto; /* El primer valor (-15px) sube la imagen */
   padding: 0 15px;
 }
 
 .imagen-animada {
-  max-width: 180px; /* Tamaño reducido para computadora */
+  max-width: 180px; /* Mantén el tamaño compacto que elegiste */
   width: 100%;
   height: auto;
   object-fit: contain;
 }
 
 @media (max-width: 600px) {
+  .animacion-container {
+    margin: -10px auto 25px auto; /* Ajuste para celular */
+  }
+  
   .imagen-animada {
-    max-width: 140px; /* Tamaño aún más compacto para celulares */
+    max-width: 140px;
   }
 }
