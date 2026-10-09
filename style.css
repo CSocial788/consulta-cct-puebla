@@ -1,4 +1,4 @@
-/* --- Tipografía Noto Sans y Fondo con Imagen --- */
+/* --- Tipografía Noto Sans y Fondo General --- */
 * {
   box-sizing: border-box;
 }
@@ -19,24 +19,24 @@ body {
 
 /* --- Encabezado Sin Franja Vino --- */
 header, .header {
-  background-color: transparent !important; /* Se elimina el fondo color vino */
-  padding: 20px 10px 5px 10px !important;
+  background-color: transparent !important;
+  padding: 25px 10px 10px 10px !important;
   box-shadow: none !important;
 }
 
 .header-container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-/* Logo de Becas pequeño */
+/* Logo de Becas más grande */
 .logo-header, header img {
-  max-height: 50px !important;
+  max-height: 85px !important; /* Aumentado a un tamaño más visible */
   width: auto;
   object-fit: contain;
 }
@@ -45,28 +45,28 @@ header, .header {
   text-align: center;
 }
 
-/* Títulos con letras oscuras para que se lean bien sobre el fondo claro */
 .header h1, header h1 {
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  color: #691C32 !important; /* Texto en tono guinda institucional */
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #691C32 !important; /* Guinda institucional */
   margin: 0 !important;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .header h2, header h2 {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  color: #333333 !important; /* Texto en color oscuro */
-  margin: 4px 0 0 0 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #333333 !important;
+  margin: 5px 0 0 0 !important;
 }
 
 /* --- Contenedor Principal (Tarjeta del Buscador) --- */
 .container, main {
-  max-width: 550px;
+  max-width: 580px;
   margin: 20px auto 40px auto;
   padding: 25px 20px;
-  background: rgba(255, 255, 255, 0.96); /* Blanco con ligera transparencia */
+  background: rgba(255, 255, 255, 0.96);
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0e0e0;
@@ -83,41 +83,48 @@ header, .header {
 /* --- Buscador e Inputs --- */
 .search-box {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
 input {
-  padding: 10px 12px;
+  padding: 11px 14px;
   font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   width: 65%;
   border: 2px solid #BC955C;
-  border-radius: 5px;
+  border-radius: 6px;
   outline: none;
+  transition: border-color 0.2s;
 }
 
 input:focus {
   border-color: #691C32;
 }
 
+/* Botón en Color Vino */
 button {
-  padding: 10px 18px;
+  padding: 11px 20px;
   font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  background-color: #103923;
-  color: #ffffff;
+  background-color: #691C32 !important; /* Color Vino/Guinda */
+  color: #ffffff !important;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 button:hover {
-  background-color: #0B2618;
+  background-color: #4A1323 !important; /* Vino más oscuro al pasar el cursor */
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 /* --- Cuadro de Resultados --- */
@@ -130,6 +137,10 @@ button:hover {
 @media (max-width: 600px) {
   .header-container {
     flex-direction: column;
+  }
+
+  .logo-header, header img {
+    max-height: 70px !important;
   }
 
   .search-box {
