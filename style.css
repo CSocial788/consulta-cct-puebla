@@ -1,57 +1,146 @@
+/* --- Tipografía Noto Sans y Fondo con Imagen --- */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  font-family: 'Noto Sans', sans-serif; /* Tipografía Noto Sans */
+  /* Cambia 'fondo.png' por el nombre exacto de la imagen de fondo que subiste */
+  background-image: url('fondo.png');
+  background-repeat: repeat; /* Repite el patrón del diseño pequeño */
+  background-position: top left;
+  background-color: #ffffff; /* Color de respaldo si la imagen tarda en cargar */
   margin: 0;
   padding: 0;
+  color: #333333;
+}
+
+/* --- Encabezado --- */
+.header {
+  background-color: #691C32; /* Guinda Institucional */
+  color: #ffffff;
+  padding: 20px 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo-header {
+  max-height: 85px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-text {
   text-align: center;
 }
 
-.header {
-  background-color: #691c32; /* Tono institucional */
-  color: white;
-  padding: 20px 10px;
+.header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+.header h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* --- Contenedor Principal (Tarjeta del Buscador) --- */
 .container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.95); /* Fondo blanco ligeramente translúcido para resaltar sobre la imagen */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  text-align: center;
 }
 
+.instruction {
+  font-size: 16px;
+  font-weight: 600;
+  color: #285C4D;
+  margin-bottom: 20px;
+}
+
+/* --- Buscador --- */
 .search-box {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 15px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 input {
-  padding: 10px;
+  padding: 12px 15px;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
+  font-weight: 600;
   text-transform: uppercase;
   width: 60%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  min-width: 200px;
+  border: 2px solid #BC955C;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #691C32;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 22px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   background-color: #103923;
-  color: white;
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
-  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 button:hover {
-  background-color: #0b2618;
+  background-color: #0B2618;
 }
 
+button:active {
+  transform: scale(0.98);
+}
+
+/* --- Resultado --- */
 .result-box {
   margin-top: 25px;
   text-align: left;
+}
+
+/* Adaptación para pantallas de celulares */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+  }
+
+  .logo-header {
+    max-height: 65px;
+  }
+
+  input, button {
+    width: 100%;
+  }
 }
