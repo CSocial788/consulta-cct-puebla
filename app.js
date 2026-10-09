@@ -9,6 +9,8 @@ document.getElementById('cctInput').addEventListener('keypress', function (e) {
 async function consultarCCT() {
   const inputRaw = document.getElementById('cctInput').value;
   const resultDiv = document.getElementById('result');
+  const animacionDiv = document.querySelector('.animacion-container'); // Identifica la animación
+  
   resultDiv.innerHTML = '';
 
   const cctBuscada = inputRaw.trim().replace(/\s+/g, '').toUpperCase();
@@ -16,6 +18,11 @@ async function consultarCCT() {
   if (cctBuscada === '') {
     resultDiv.innerHTML = '<p style="color:red; font-weight:bold;">Por favor, ingresa una CCT válida.</p>';
     return;
+  }
+
+  // Oculta la animación al presionar Consultar
+  if (animacionDiv) {
+    animacionDiv.style.display = 'none';
   }
 
   resultDiv.innerHTML = '<p style="color:#666;">Buscando información...</p>';
