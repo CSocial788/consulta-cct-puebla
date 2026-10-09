@@ -1,15 +1,5 @@
-const cctInput = document.getElementById('cctInput').value
-  .trim()
-  .replace(/[^a-zA-Z0-9]/g, '')
-  .toUpperCase();
-document.getElementById('cctInput').addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    consultarCCT();
-  }
-});
 document.getElementById('searchBtn').addEventListener('click', consultarCCT);
 
-// También permite consultar presionando Enter
 document.getElementById('cctInput').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     consultarCCT();
@@ -21,7 +11,6 @@ async function consultarCCT() {
   const resultDiv = document.getElementById('result');
   resultDiv.innerHTML = '';
 
-  // Limpiamos la CCT ingresada: quitamos espacios y la convertimos a mayúsculas
   const cctBuscada = inputRaw.trim().replace(/\s+/g, '').toUpperCase();
 
   if (cctBuscada === '') {
@@ -29,7 +18,6 @@ async function consultarCCT() {
     return;
   }
 
-  // Mostramos mensaje de carga
   resultDiv.innerHTML = '<p style="color:#666;">Buscando información...</p>';
 
   try {
@@ -41,22 +29,20 @@ async function consultarCCT() {
 
     const escuelas = await response.json();
 
-    // Buscamos coincidencia revisando cualquier columna que pueda contener la CCT
+    // Búsqueda directa por CCT
     const resultado = escuelas.find(item => {
-      // Busca la propiedad CCT sin importar si está en mayúsculas o minúsculas en el JSON
-      const claveCCT = item.CCT || item.cct || item.Clave || item.clave || item.CCT_ESCUELA;
+      const claveCCT = item.CCT || item.cct || item.A;
       if (!claveCCT) return false;
       return String(claveCCT).trim().replace(/\s+/g, '').toUpperCase() === cctBuscada;
     });
 
     if (resultado) {
-      // Obtenemos los valores soportando diferentes nombres de columnas en el JSON
-      const nombreEscuela = resultado.Nombre_Escuela || resultado.NOMBRE_ESCUELA || resultado.Escuela || resultado.escuela || 'No especificado';
       const cct = resultado.CCT || resultado.cct || cctBuscada;
-      const municipio = resultado.Municipio || resultado.MUNICIPIO || resultado.municipio || 'No especificado';
-      const fecha = resultado.Fecha_Asamblea || resultado.FECHA || resultado.Fecha || 'Por confirmar';
-      const hora = resultado.Hora_Asamblea || resultado.HORA || resultado.Hora || 'Por confirmar';
-      const lugar = resultado.Lugar || resultado.SEDE || resultado.Sede || 'No especificado';
+      const nombreEscuela = resultado.Nombre_Escuela || resultado.B || 'No especificado';
+      const municipio = resultado.Municipio || resultado.C || 'No especificado';
+      const fecha = resultado.Fecha_Asamblea || resultado.D || 'Por confirmar';
+      const hora = resultado.Hora_Asamblea || resultado.E || 'Por confirmar';
+      const lugar = resultado.Lugar || resultado.F || 'No especificado';
 
       resultDiv.innerHTML = `
         <div style="border: 2px solid #103923; padding: 20px; border-radius: 8px; background-color: #f0fdf4; margin-top: 15px;">
