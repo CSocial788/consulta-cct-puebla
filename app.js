@@ -42,21 +42,8 @@ async function consultarCCT() {
       const municipio = resultado.Municipio || 'No especificado';
       const fecha = resultado.Fecha_Asamblea || 'Por confirmar';
       const hora = resultado.Hora_Asamblea || 'Por confirmar';
-      
-      // Concatena Sede y Dirección si existen
-      const sede = resultado.Sede ? resultado.Sede.trim() : '';
-      const direccion = resultado.Dirección || resultado.Direccion || '';
-      
-      let lugarFinal = 'No especificado';
-      if (sede && direccion) {
-        lugarFinal = `${sede} — ${direccion}`;
-      } else if (sede) {
-        lugarFinal = sede;
-      } else if (direccion) {
-        lugarFinal = direccion;
-      } else if (resultado.Lugar) {
-        lugarFinal = resultado.Lugar;
-      }
+      const sede = resultado.Sede ? resultado.Sede.trim() : 'No especificada';
+      const direccion = resultado.Dirección || resultado.Direccion || 'No especificada';
 
       resultDiv.innerHTML = `
         <div style="border: 2px solid #103923; padding: 20px; border-radius: 8px; background-color: #f0fdf4; margin-top: 15px;">
@@ -65,7 +52,8 @@ async function consultarCCT() {
           <p><strong>Municipio:</strong> ${municipio}</p>
           <p><strong>Fecha de Asamblea:</strong> ${fecha}</p>
           <p><strong>Hora:</strong> ${hora}</p>
-          <p><strong>Lugar / Sede:</strong> ${lugarFinal}</p>
+          <p><strong>Sede:</strong> ${sede}</p>
+          <p><strong>Dirección:</strong> ${direccion}</p>
         </div>
       `;
     } else {
