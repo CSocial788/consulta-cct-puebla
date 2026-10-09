@@ -20,23 +20,23 @@ body {
 /* --- Encabezado Sin Franja Vino --- */
 header, .header {
   background-color: transparent !important;
-  padding: 25px 10px 10px 10px !important;
+  padding: 30px 10px 15px 10px !important;
   box-shadow: none !important;
 }
 
 .header-container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
-/* Logo de Becas más grande */
+/* Logo de Becas mucho más grande */
 .logo-header, header img {
-  max-height: 85px !important; /* Aumentado a un tamaño más visible */
+  max-height: 130px !important; /* Tamaño protagónico */
   width: auto;
   object-fit: contain;
 }
@@ -46,7 +46,7 @@ header, .header {
 }
 
 .header h1, header h1 {
-  font-size: 20px !important;
+  font-size: 22px !important;
   font-weight: 800 !important;
   color: #691C32 !important; /* Guinda institucional */
   margin: 0 !important;
@@ -55,10 +55,10 @@ header, .header {
 }
 
 .header h2, header h2 {
-  font-size: 15px !important;
+  font-size: 16px !important;
   font-weight: 500 !important;
   color: #333333 !important;
-  margin: 5px 0 0 0 !important;
+  margin: 6px 0 0 0 !important;
 }
 
 /* --- Contenedor Principal (Tarjeta del Buscador) --- */
@@ -140,7 +140,7 @@ button:active {
   }
 
   .logo-header, header img {
-    max-height: 70px !important;
+    max-height: 100px !important; /* Tamaño amplio para pantallas móviles */
   }
 
   .search-box {
