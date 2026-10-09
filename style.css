@@ -159,7 +159,7 @@ button:active {
 /* --- Contenedor y Estilo de la Animación (Más Arriba) --- */
 .animacion-container {
   text-align: center;
-  margin: -30px auto 30px auto; /* El primer valor (-15px) sube la imagen */
+  margin: -45px auto 30px auto; /* El primer valor (-15px) sube la imagen */
   padding: 0 15px;
 }
 
@@ -172,7 +172,7 @@ button:active {
 
 @media (max-width: 600px) {
   .animacion-container {
-    margin: -05px auto 25px auto; /* Ajuste para celular */
+    margin: -10px auto 25px auto; /* Ajuste para celular */
   }
   
   .imagen-animada {
