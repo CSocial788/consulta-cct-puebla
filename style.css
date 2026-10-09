@@ -151,3 +151,8 @@ button:active {
     width: 100%;
   }
 }
+/* Estilo para destacar la palabra Puebla en Vino y Negritas */
+.texto-puebla {
+  color: #691C32 !important; /* Color vino/guinda institucional */
+  font-weight: 700 !important; /* Negritas */
+}
