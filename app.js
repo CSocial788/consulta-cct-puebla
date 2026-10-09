@@ -29,29 +29,43 @@ async function consultarCCT() {
 
     const escuelas = await response.json();
 
-    // Búsqueda directa por CCT
+    // Búsqueda por CCT
     const resultado = escuelas.find(item => {
-      const claveCCT = item.CCT || item.cct || item.A;
+      const claveCCT = item.CCT || item.cct;
       if (!claveCCT) return false;
       return String(claveCCT).trim().replace(/\s+/g, '').toUpperCase() === cctBuscada;
     });
 
     if (resultado) {
-      const cct = resultado.CCT || resultado.cct || cctBuscada;
-      const nombreEscuela = resultado.Nombre_Escuela || resultado.B || 'No especificado';
-      const municipio = resultado.Municipio || resultado.C || 'No especificado';
-      const fecha = resultado.Fecha_Asamblea || resultado.D || 'Por confirmar';
-      const hora = resultado.Hora_Asamblea || resultado.E || 'Por confirmar';
-      const lugar = resultado.Lugar || resultado.F || 'No especificado';
+      const cct = resultado.CCT || cctBuscada;
+      const nombreEscuela = resultado.Nombre_Escuela || 'No especificado';
+      const municipio = resultado.Municipio || 'No especificado';
+      const fecha = resultado.Fecha_Asamblea || 'Por confirmar';
+      const hora = resultado.Hora_Asamblea || 'Por confirmar';
+      
+      // Concatena Sede y Dirección si existen
+      const sede = resultado.Sede ? resultado.Sede.trim() : '';
+      const direccion = resultado.Dirección || resultado.Direccion || '';
+      
+      let lugarFinal = 'No especificado';
+      if (sede && direccion) {
+        lugarFinal = `${sede} — ${direccion}`;
+      } else if (sede) {
+        lugarFinal = sede;
+      } else if (direccion) {
+        lugarFinal = direccion;
+      } else if (resultado.Lugar) {
+        lugarFinal = resultado.Lugar;
+      }
 
       resultDiv.innerHTML = `
         <div style="border: 2px solid #103923; padding: 20px; border-radius: 8px; background-color: #f0fdf4; margin-top: 15px;">
-          <h3 style="color: #691c32; margin-top: 0;">${nombreEscuela}</h3>
+          <h3 style="color: #691c32; margin-top: 0; font-weight: 700;">${nombreEscuela}</h3>
           <p><strong>CCT:</strong> ${cct}</p>
           <p><strong>Municipio:</strong> ${municipio}</p>
           <p><strong>Fecha de Asamblea:</strong> ${fecha}</p>
           <p><strong>Hora:</strong> ${hora}</p>
-          <p><strong>Lugar / Sede:</strong> ${lugar}</p>
+          <p><strong>Lugar / Sede:</strong> ${lugarFinal}</p>
         </div>
       `;
     } else {
@@ -65,7 +79,7 @@ async function consultarCCT() {
     console.error('Error durante la consulta:', error);
     resultDiv.innerHTML = `
       <div style="border: 1px solid #d32f2f; padding: 15px; border-radius: 6px; background-color: #ffebee; color: #c62828; margin-top: 15px;">
-        <strong>Error de lectura:</strong> Asegúrate de que el archivo <code>datos.json</code> existe en la raíz de tu repositorio y está bien estructurado.
+        <strong>Error de lectura:</strong> Revisa el archivo <code>datos.json</code>.
       </div>
     `;
   }
