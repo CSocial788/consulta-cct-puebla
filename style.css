@@ -1,4 +1,4 @@
-/* --- Tipografía Noto Sans y Fondo General --- */
+/* --- Tipografía Noto Sans y Fondo con Imagen --- */
 * {
   box-sizing: border-box;
 }
@@ -17,11 +17,11 @@ body {
   background-color: #ffffff;
 }
 
-/* --- Encabezado Compacto y Sin Franja Vino --- */
-.header {
-  background-color: transparent; /* Se quita el fondo guinda/vino */
-  padding: 15px 10px 5px 10px;
-  box-shadow: none;
+/* --- Encabezado Sin Franja Vino --- */
+header, .header {
+  background-color: transparent !important; /* Se elimina el fondo color vino */
+  padding: 20px 10px 5px 10px !important;
+  box-shadow: none !important;
 }
 
 .header-container {
@@ -30,42 +30,43 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  flex-wrap: nowrap;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-/* Logo muy pequeño y proporcional */
-.logo-header {
-  max-height: 45px; /* Tamaño pequeño */
+/* Logo de Becas pequeño */
+.logo-header, header img {
+  max-height: 50px !important;
   width: auto;
   object-fit: contain;
 }
 
 .header-text {
-  text-align: left;
+  text-align: center;
 }
 
-.header h1 {
-  font-size: 16px; /* Texto compacto */
-  font-weight: 700;
-  color: #691C32; /* Título en tono guinda */
-  margin: 0;
+/* Títulos con letras oscuras para que se lean bien sobre el fondo claro */
+.header h1, header h1 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #691C32 !important; /* Texto en tono guinda institucional */
+  margin: 0 !important;
   text-transform: uppercase;
 }
 
-.header h2 {
-  font-size: 13px;
-  font-weight: 400;
-  color: #444444;
-  margin: 2px 0 0 0;
+.header h2, header h2 {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #333333 !important; /* Texto en color oscuro */
+  margin: 4px 0 0 0 !important;
 }
 
 /* --- Contenedor Principal (Tarjeta del Buscador) --- */
-.container {
+.container, main {
   max-width: 550px;
   margin: 20px auto 40px auto;
   padding: 25px 20px;
-  background: rgba(255, 255, 255, 0.96); /* Blanco limpio con ligera transparencia */
+  background: rgba(255, 255, 255, 0.96); /* Blanco con ligera transparencia */
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0e0e0;
@@ -125,19 +126,10 @@ button:hover {
   text-align: left;
 }
 
-/* Ajuste móvil */
+/* Adaptación para celulares */
 @media (max-width: 600px) {
   .header-container {
     flex-direction: column;
-    text-align: center;
-  }
-  
-  .header-text {
-    text-align: center;
-  }
-
-  .logo-header {
-    max-height: 40px;
   }
 
   .search-box {
